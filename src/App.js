@@ -2,8 +2,8 @@ import React,{Component} from 'react';
 import Navbar1 from './Navbar/Navbar1';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter,Route} from 'react-router-dom';
-import signIn from './signIn';
-import signUp from './signUp';
+import signIn from './signIn/signIn';
+import signUp from './signUp/signUp';
 
 
 class App extends Component{
