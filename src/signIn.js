@@ -1,60 +1,39 @@
 import React from 'react';
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBInput } from 'mdbreact';
 import './sign.css';
 const signIn=()=>{
     return(
-<MDBContainer>
-      <MDBRow>
-        <MDBCol md="6">
-          <MDBCard>
-            <div className="header pt-3 grey lighten-1 ">
-              <MDBRow className="d-flex justify-content-start">
-                <h3 className="deep-grey-text mt-3 mb-4 pb-1 mx-5">
-                  Log in
-                </h3>
-              </MDBRow>
+<div className="login-form">
+    <form action="#" method="post">
+        <h2 className="text-center">Sign in</h2>   
+        <div className="form-group">
+        	<div className="input-group">
+                <span className="input-group-addon"><i className="fa fa-user"></i></span>
+                <input type="text" className="form-control" name="username" placeholder="Username" required="required"/>				
             </div>
-            <MDBCardBody className="mx-4 mt-4">
-              <MDBInput label="Your email" group type="text" validate />
-              <MDBInput
-                label="Your password"
-                group
-                type="password"
-                validate
-                containerClass="mb-0"
-              />
-              <p className="font-small grey-text d-flex justify-content-end">
-                Forgot
-                <a
-                  href="#!"
-                  className="dark-grey-text font-weight-bold ml-1"
-                >
-                  Password?
-                </a>
-              </p>
-              <div className="text-center mb-4 mt-5">
-                <MDBBtn
-                  color="danger"
-                  type="button"
-                  className="btn-block z-depth-2"
-                >
-                  Log in
-                </MDBBtn>
-              </div>
-              <p className="font-small grey-text d-flex justify-content-center">
-                Don't have an account?
-                <a
-                  href="/signUp"
-                  className="dark-grey-text font-weight-bold ml-1"
-                >
-                  Sign up
-                </a>
-              </p>
-            </MDBCardBody>
-          </MDBCard>
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
+        </div>
+		<div className="form-group">
+            <div className="input-group">
+                <span className="input-group-addon"><i className="fa fa-lock"></i></span>
+                <input type="password" className="form-control" name="password" placeholder="Password" required="required"/>				
+            </div>
+        </div>        
+        <div className="form-group">
+            <button type="submit" className="btn btn-primary login-btn btn-block">Sign in</button>
+        </div>
+        <div className="clearfix">
+            <label className="pull-left checkbox-inline"><input type="checkbox"/> Remember me</label>
+            <a href="#" className="pull-right">Forgot Password?</a>
+        </div>
+		<div className="or-seperator"><i>or</i></div>
+        <p className="text-center">Login with your social media account</p>
+        <div className="text-center social-btn">
+            <a href="#" className="btn btn-primary"><i className="fa fa-facebook"></i>&nbsp; Facebook</a>
+            <a href="#" className="btn btn-info"><i className="fa fa-twitter"></i>&nbsp; Twitter</a>
+			<a href="#" className="btn btn-danger"><i className="fa fa-google"></i>&nbsp; Google</a>
+        </div>
+    </form>
+    <p className="text-center text-muted small">Don't have an account? <a href="#">Sign up here!</a></p>
+</div>
     );
 }
 export default signIn;
