@@ -3,8 +3,9 @@ import Navbar1 from './Navbar/Navbar1';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SignIn from './signIn/signIn';
 import SignUp from './signUp/signUp';
-import {BrowserRouter,Route} from 'react-router-dom';
+import {BrowserRouter,Route,Link} from 'react-router-dom';
 import User from './user';
+import Book from './book';
 
 
 class App extends Component{
@@ -22,22 +23,21 @@ class App extends Component{
   render(){
     
      
-        {return(
+        return(
+          
           <BrowserRouter>
         <div>
         <Navbar1 isSignIn={this.isSignIn}route={this.state.route}onRouteChange={this.onRouteChange} isSignedIn={this.state.isSignedIn} />
           <Route path='/signIn' render={(props)=><SignIn {...props} isSignIn={this.isSignIn} isSignedIn={this.state.isSignedIn}/>}/>
           <Route path='/signUp' component={SignUp}/>
           <Route path='/signedin'component={User}/>
+          <Route path='/BookNow'component={Book}/>
+          
         </div>
         </BrowserRouter>
-        )}
-       
-      
-      
-
-    
+        )}    
+  
   }
 
-}
+
 export default App;

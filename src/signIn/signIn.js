@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import './sign.css';
 import {Link,Router} from 'react-router-dom';
+
 class SignIn extends Component{
     state={
         Email:'',
@@ -17,8 +18,16 @@ class SignIn extends Component{
         });
     }
     onSubmit=(e)=>{
-        
-        this.props.isSignIn(true);
+       
+        console.log(this.state);
+        if(this.state.Email===''||this.state.Password==='')
+       { alert('enter username and password correctly');
+       this.props.isSignIn(false);
+       this.props.history.push('/signIn');
+     }
+        else
+        {
+        this.props.isSignIn(true);}
     }
     render(){
         console.log(this.props);
@@ -30,13 +39,13 @@ class SignIn extends Component{
         <div className="form-group">
         	<div className="input-group">
                 <span className="input-group-addon"><i className="fa fa-user"></i></span>
-                <input type="text" className="form-control" name="email" placeholder="Email" required="required"/>				
+                <input type="text" className="form-control" name="email" placeholder="Email" required="required"onChange={this.onEmailChange}/>				
             </div>
         </div>
 		<div className="form-group">
             <div className="input-group">
                 <span className="input-group-addon"><i className="fa fa-lock"></i></span>
-                <input type="password" className="form-control" name="password" placeholder="Password" required="required"/>				
+                <input type="password" className="form-control" name="password" placeholder="Password" required="required"onChange={this.onPasswordChange}/>				
             </div>
         </div>        
         <div className="form-group">
