@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import './signUp.css';
 
-class signUp extends Component {
+class SignUp extends Component {
   state={
     userid:0,
     Name:'',
@@ -54,7 +54,7 @@ class signUp extends Component {
     
   }
   render()
-  {
+  {console.log(this.props);
     
   return (
       
@@ -91,4 +91,4 @@ class signUp extends Component {
   );
 }};
 
-export default signUp;
+export default SignUp;

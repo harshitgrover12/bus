@@ -1,14 +1,34 @@
-import React from 'react';
+import React,{Component} from 'react';
 import './sign.css';
-const signIn=()=>{
+class SignIn extends Component{
+    state={
+        Email:'',
+        Password:''
+    }
+    onEmailChange=(e)=>{
+        this.setState({
+            Email:e.target.value
+        })
+    }
+    onPasswordChange=(e)=>{
+        this.setState({
+            Password:e.target.value
+        });
+    }
+    onSubmit=(e)=>{
+        e.preventDefault();
+        this.props.isSignIn(true);
+    }
+    render(){
     return(
+    
 <div className="login-form">
-    <form action="#" method="post">
+    <form >
         <h2 className="text-center">Sign in</h2>   
         <div className="form-group">
         	<div className="input-group">
                 <span className="input-group-addon"><i className="fa fa-user"></i></span>
-                <input type="text" className="form-control" name="username" placeholder="Username" required="required"/>				
+                <input type="text" className="form-control" name="email" placeholder="Email" required="required"/>				
             </div>
         </div>
 		<div className="form-group">
@@ -18,7 +38,7 @@ const signIn=()=>{
             </div>
         </div>        
         <div className="form-group">
-            <button type="submit" className="btn btn-primary login-btn btn-block">Sign in</button>
+            <button type="submit" className="btn btn-primary login-btn btn-block"onClick={this.onSubmit}>Sign in</button>
         </div>
         <div className="clearfix">
             <label className="pull-left checkbox-inline"><input type="checkbox"/> Remember me</label>
@@ -32,8 +52,8 @@ const signIn=()=>{
 			<a href="#" className="btn btn-danger"><i className="fa fa-google"></i>&nbsp; Google</a>
         </div>
     </form>
-    <p className="text-center text-muted small">Don't have an account? <a href="#">Sign up here!</a></p>
+    <p className="text-center text-muted small">Don't have an account? <a href="/signUp">Sign up here!</a></p>
 </div>
-    );
+    );}
 }
-export default signIn;
+export default SignIn;
