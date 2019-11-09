@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import './sign.css';
+import {Link,Router} from 'react-router-dom';
 class SignIn extends Component{
     state={
         Email:'',
@@ -16,10 +17,11 @@ class SignIn extends Component{
         });
     }
     onSubmit=(e)=>{
-        e.preventDefault();
+        
         this.props.isSignIn(true);
     }
     render(){
+        console.log(this.props);
     return(
     
 <div className="login-form">
@@ -38,7 +40,8 @@ class SignIn extends Component{
             </div>
         </div>        
         <div className="form-group">
-            <button type="submit" className="btn btn-primary login-btn btn-block"onClick={this.onSubmit}>Sign in</button>
+            <Link to="/signedin">
+            <button type="submit" className="btn btn-primary login-btn btn-block" onClick={this.onSubmit}>Sign in</button></Link>
         </div>
         <div className="clearfix">
             <label className="pull-left checkbox-inline"><input type="checkbox"/> Remember me</label>

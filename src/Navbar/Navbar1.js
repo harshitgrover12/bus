@@ -6,14 +6,7 @@ import {Navbar,Nav,NavDropdown} from  'react-bootstrap';
 
 class Navbar1 extends Component {
   
-  handleSignInChange=(e)=>{
-    e.preventDefault();
-    this.props.onRouteChange('signin');
-  }
-  handleSignUpChange=(e)=>{
-    e.preventDefault();
-    this.props.onRouteChange('signup');
-  }
+ 
   render() {
     console.log(this.props);
       
@@ -40,7 +33,7 @@ return(
   <Nav>
   <Nav.Link>Welcome</Nav.Link>
       <Nav.Link  href="/" onClick={()=>
-        this.props.onRouteChange('home')
+        this.props.isSignIn(false)
       }>
         Sign Out
       </Nav.Link>
@@ -67,8 +60,8 @@ return(
           </NavDropdown>
         </Nav>
         <Nav>
-          <Nav.Link href="/signIn" onClick={this.handleSignInChange}>Sign In</Nav.Link>
-          <Nav.Link  href="/signUp"onClick={this.handleSignUpChange}>
+          <Nav.Link href="/signIn" >Sign In</Nav.Link>
+          <Nav.Link  href="/signUp">
             Sign Up
           </Nav.Link>
         </Nav>
