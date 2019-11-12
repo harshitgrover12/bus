@@ -11,7 +11,6 @@ class SignUp extends Component {
 
   }
   handleNameChange=(e)=>{
-    console.log(e.target.value);
     this.setState({
       Name:e.target.value
     });
@@ -34,11 +33,12 @@ class SignUp extends Component {
     })
   }
   handleSubmit=(e)=>{
-   e.preventDefault();
-  
+   
+  e.preventDefault();
     this.setState({
       userid:Math.random()*1000})
-      console.log(this.state);fetch('http://localhost:1337/signUp',{
+      
+      fetch('http://localhost:1337/signUp',{
         method:'post',
         headers:{'Content-type':'application/json'},
         body:JSON.stringify({
@@ -50,11 +50,11 @@ class SignUp extends Component {
           
         }).then(response=>response.json()).then(resp=>console.log(resp))
 
-    
+    this.props.history.push('/signIn');
     
   }
   render()
-  {console.log(this.props);
+  {
     
   return (
       

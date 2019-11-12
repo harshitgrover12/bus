@@ -18,8 +18,8 @@ class SignIn extends Component{
         });
     }
     onSubmit=(e)=>{
-       
-        console.log(this.state);
+       e.preventDefault();
+        
         if(this.state.Email===''||this.state.Password==='')
        { alert('enter username and password correctly');
        this.props.isSignIn(false);
@@ -27,10 +27,31 @@ class SignIn extends Component{
      }
         else
         {
-        this.props.isSignIn(true);}
+        fetch('http://localhost:1337/signIn',{
+        method:'post',
+        headers:{'Content-type':'application/json'},
+        body:JSON.stringify({
+          Email:this.state.Email,
+          Password:this.state.Password 
+          })
+          
+        }).then(response=>response.json()).then(({data})=>{
+        if(data!=="noEntry")
+        {
+        
+        this.props.userData(data)
+        this.props.history.push('/Navbar2')
+        }
+        else
+        {
+            alert('wrong username or password');
+           
+        }
+        }
+        )}
     }
     render(){
-        console.log(this.props);
+        
     return(
     
 <div className="login-form">
@@ -49,8 +70,8 @@ class SignIn extends Component{
             </div>
         </div>        
         <div className="form-group">
-            <Link to="/signedin">
-            <button type="submit" className="btn btn-primary login-btn btn-block" onClick={this.onSubmit}>Sign in</button></Link>
+            
+            <button type="submit" className="btn btn-primary login-btn btn-block" onClick={this.onSubmit}>Sign in</button>
         </div>
         <div className="clearfix">
             <label className="pull-left checkbox-inline"><input type="checkbox"/> Remember me</label>
