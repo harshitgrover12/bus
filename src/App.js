@@ -19,8 +19,9 @@ class App extends Component{
     route:'home',
     value:[],
     BusDetails:{},
-    userDetails:{},
-    seatDetails:[]
+    userDetails:[],
+    seatDetails:[],
+    userid:0
   }
   isSignIn=(issign)=>{
     this.setState({
@@ -41,11 +42,14 @@ class App extends Component{
     this.setState({
       userDetails:userDetails
     })
-  }
+    this.state.userDetails.map((data)=>this.setState({
+      userid:data.user_id
+    }))}
+  
   seatsData=(seats)=>{
     this.setState({
       seatDetails:seats
-    });
+    })
   }
   
   
@@ -65,7 +69,7 @@ class App extends Component{
           <Route path='/Navbar2/BookNow'render={(props)=><Book {...props} busvalue={this.busvalue}userDetails={this.state.userDetails}/>}/>
            <Route  path='/searchResults' render={(props)=><SearchResults {...props} value={this.state.value}busData={this.busData}/>}/>
         
-          <Route path='/viewSeats' render={(props)=><Seats {...props} seatsData={this.seatsData}userDetails={this.state.userDetails}/>}/>
+          <Route path='/viewSeats' render={(props)=><Seats {...props} seatsData={this.seatsData}userDetails={this.state.userDetails}userid={this.state.userid}BusDetails={this.state.BusDetails}/>}/>
           <Route path='/generatedTicket'render={(props)=><GeneratedTicket {...props} BusDetails={this.state.BusDetails} userDetails={this.state.userDetails}seatDetails={this.state.seatDetails}/>}/>
         </div>
         </BrowserRouter>

@@ -15,7 +15,7 @@ class GeneratedTicket extends Component{
                 <th>Departure_time</th>
                 <th>Arrival_time</th>
                 <th>Price</th>
-                <th>Seats_available</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -26,15 +26,16 @@ class GeneratedTicket extends Component{
             <tr>
                 <td>{this.props.BusDetails.Bus_No}</td>
                 
-                <td>{this.props.userDetails.Name}</td>
+                <td>{this.props.userDetails.map((data)=>
+                data.Name)}</td>
                 <td>{data}</td>
                 <td>{this.props.BusDetails.Source}</td>
                 <td>{this.props.BusDetails.Destination}</td>
                 <td>{this.props.BusDetails.Departure_time}</td>
                 <td>{this.props.BusDetails.Arrival_time}</td>
                 <td>{this.props.BusDetails.Price}</td>
-                <td>{this.props.BusDetails.Seats_available} 
-                </td>
+                
+                
             </tr>)
         }          
         </tbody>

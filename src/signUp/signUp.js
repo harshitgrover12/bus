@@ -3,7 +3,7 @@ import './signUp.css';
 
 class SignUp extends Component {
   state={
-    userid:0,
+    
     Name:'',
     Email:'',
     password:'',
@@ -34,15 +34,16 @@ class SignUp extends Component {
   }
   handleSubmit=(e)=>{
    
+   
   e.preventDefault();
-    this.setState({
-      userid:Math.random()*1000})
+    
+      console.log(this.state.userid);
       
       fetch('http://localhost:1337/signUp',{
         method:'post',
         headers:{'Content-type':'application/json'},
         body:JSON.stringify({
-          userid:this.state.userid,
+          
           Name:this.state.Name,
           Email:this.state.Email,
           password:this.state.password 

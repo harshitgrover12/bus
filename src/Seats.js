@@ -2,7 +2,8 @@ import React,{Component} from 'react';
 import './main.css';
 class Seats extends Component{
   state={
-    selectedSeats:[]
+    selectedSeats:[],
+    userDetails:[]
   }
   handleClick=(seat)=>{
   
@@ -14,8 +15,23 @@ class Seats extends Component{
   }
   handleSubmit=(e)=>{
     e.preventDefault()
-    this.props.seatsData(this.state.selectedSeats);
-    this.props.history.push('/generatedTicket');
+    
+    fetch('http://localhost:1337/seats',{
+      method:'post',
+        headers:{'Content-type':'application/json'},
+        body:JSON.stringify({
+          userid:this.props.userid,
+          No:this.state.selectedSeats.length,
+          busno:this.props.BusDetails.Bus_No,
+          Seats:this.state.selectedSeats
+        })
+
+    }).then((response)=>response.json()).then(response=>{console.log(response)
+    })
+    this.props.seatsData(this.state.selectedSeats)
+    this.props.history.push('/generatedTicket')
+    
+    
   }
     render(){
       console.log(this.props.userDetails);
