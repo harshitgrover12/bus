@@ -3,7 +3,7 @@ import {Navbar,Nav,NavDropdown} from  'react-bootstrap';
 class Navbar2 extends Component{
     handleSubmit=(e)=>{
         e.preventDefault();
-        this.props.history.push('Navbar2/BookNow');
+        this.props.history.push('/BookNow');
     }
     render()
     {

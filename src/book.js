@@ -47,11 +47,11 @@ return(
 
 
 <div class="input-group" style={{marginTop: 90,marginLeft: 400,marginRight: 90}}>
-    <input type="text"  placeholder="Start"style={{width:150,textAlign:"justify"}}onChange={this.onSourceChange}/>
+    <input type="text"  placeholder="Start"style={{width:150,textAlign:"justify"}}onChange={this.onSourceChange} autocomplete="on"/>
     <span class="input-group-addon">-</span>
-    <input type="text"  placeholder="End"style={{width:150,textAlign:"justify"}}onChange={this.onDestinationChange}/>
+    <input type="text"  placeholder="End"style={{width:150,textAlign:"justify"}} autocomplete="on" onChange={this.onDestinationChange}/>
     <span class="input-group-addon">-</span>
-    <input type="text"  placeholder="Start Date"style={{width:150,textAlign:"justify"}}onChange={this.onStartDateChange}/>
+    <input type="text"  placeholder="Start Date"style={{width:150,textAlign:"justify"}} autocomplete="on" onChange={this.onStartDateChange}/>
     <button type="submit"className="btn btn-primary login-btn btn-block"style={{width:100}}onClick={this.handleClick}>Search</button>
     
 </div>

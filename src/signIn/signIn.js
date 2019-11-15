@@ -23,7 +23,7 @@ class SignIn extends Component{
         if(this.state.Email===''||this.state.Password==='')
        { alert('enter username and password correctly');
        this.props.isSignIn(false);
-       this.props.history.push('/signIn');
+       
      }
         else
         {
@@ -36,11 +36,12 @@ class SignIn extends Component{
           })
           
         }).then(response=>response.json()).then(({data})=>{
-        if(data!=="noEntry")
+        if(data.length!=0)
         {
         
         this.props.userData(data)
-        this.props.history.push('/Navbar2')
+        this.props.isSignIn(true)
+        this.props.history.push('/')
         }
         else
         {

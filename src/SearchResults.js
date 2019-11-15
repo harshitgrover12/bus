@@ -28,6 +28,7 @@ render(){
                 <th>Arrival_time</th>
                 <th>Price</th>
                 <th>Seats_available</th>
+                <th>Date</th>
             </tr>
         </thead>
         <tbody>
@@ -47,6 +48,7 @@ render(){
                 <td>{data.Seats_available} <button type="submit"className="btn btn-primary login-btn btn-block"style={{width:100}}onClick={(e)=>{this.handleClick(data);
                 e.preventDefault()}}>view seats</button>
                 </td>
+                <td>{data.Date}</td>
             </tr>
             )
         }          

@@ -7,15 +7,32 @@ class Seats extends Component{
   }
   handleClick=(seat)=>{
   
-    let seats=[...this.state.selectedSeats,seat];
+    
+    fetch('http://localhost:1337/seat1',{
+      method:'post',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        seat:seat
+      }
+        
+      )
+    }).then(response=>response.json()).then(({data})=>{
+      if(data.length>0)
+      alert('seat already booked');
+      else
+      {
+        let seats=[...this.state.selectedSeats,seat];
     this.setState({
       selectedSeats:seats
     })
-    console.log(this.state);
+      }
+      
+    })
   }
   handleSubmit=(e)=>{
     e.preventDefault()
-    
+    if(this.props.isSignedIn===true)
+    {
     fetch('http://localhost:1337/seats',{
       method:'post',
         headers:{'Content-type':'application/json'},
@@ -23,13 +40,20 @@ class Seats extends Component{
           userid:this.props.userid,
           No:this.state.selectedSeats.length,
           busno:this.props.BusDetails.Bus_No,
-          Seats:this.state.selectedSeats
+          Seats:this.state.selectedSeats,
+          date:this.props.BusDetails.Date
         })
 
     }).then((response)=>response.json()).then(response=>{console.log(response)
     })
     this.props.seatsData(this.state.selectedSeats)
-    this.props.history.push('/generatedTicket')
+    this.props.history.push('/generatedTicket');
+    }
+    else
+    {
+    this.props.history.push('/signIn')
+    }
+  
     
     
   }
